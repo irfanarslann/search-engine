@@ -21,17 +21,16 @@ const DataContextProvider = ({ children }) => {
     try {
       const data = await axios.get("http://localhost:3001/data");
 
-      let convertedData = [];
       //Convert Array of arrays data to array of objects
-      data.data.data.map((data) => {
-        convertedData.push({
+      let convertedData = data.data.data.map((data) => {
+        return {
           name: data[0],
           company: data[1],
           email: data[2],
           date: data[3],
           country: data[4],
           city: data[5],
-        });
+        };
       });
       dispatch({ type: GET_DATA, payload: convertedData });
     } catch (err) {
