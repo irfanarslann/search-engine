@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import ReactPaginate from "react-paginate";
-import ResultList from "./ResultList";
+import React, { useEffect, useState } from 'react';
+import ReactPaginate from 'react-paginate';
+import ResultList from './ResultList';
 
 const PaginatedResults = ({ itemsPerPage, result }) => {
   const [currentItems, setCurrentItems] = useState(null);
@@ -27,32 +27,33 @@ const PaginatedResults = ({ itemsPerPage, result }) => {
       {currentItems && currentItems.length > 0 ? (
         <>
           <ResultList result={currentItems} showMore={false} sort={true} />
-
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel="Next"
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={4}
-            pageCount={pageCount}
-            previousLabel="Previous"
-            renderOnZeroPageCount={null}
-            activeClassName="pageActive"
-          />
+          {currentItems.length > 3 && (
+            <ReactPaginate
+              breakLabel='...'
+              nextLabel='Next'
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={4}
+              pageCount={pageCount}
+              previousLabel='Previous'
+              renderOnZeroPageCount={null}
+              activeClassName='pageActive'
+            />
+          )}
         </>
       ) : (
         <h3
           style={{
-            textAlign: "center",
-            marginTop: "20px",
-            backgroundColor: "#F8D7DA",
-            borderColor: "#ffeeba",
-            borderRadius: "5px",
-            fontSize: "15px",
-            padding: "10px",
-            textTransform: "capitalize",
-            marginBottom: "25px",
-            fontWeight: "400",
-            color: "#881C24",
+            textAlign: 'center',
+            marginTop: '20px',
+            backgroundColor: '#F8D7DA',
+            borderColor: '#ffeeba',
+            borderRadius: '5px',
+            fontSize: '15px',
+            padding: '10px',
+            textTransform: 'capitalize',
+            marginBottom: '25px',
+            fontWeight: '400',
+            color: '#881C24',
           }}
         >
           There is no result
